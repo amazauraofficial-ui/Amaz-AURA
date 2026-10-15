@@ -1,0 +1,47 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-emerald-deep: #063D2E;
+    --color-emerald-dark: #042D22;
+    --color-gold-metallic: #C9A24A;
+    --color-ivory-soft: #FAF7F0;
+    --color-cream-warm: #F0E7D8;
+    --color-charcoal: #252525;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    color: #252525;
+    background-color: #FAF7F0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-editorial {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+}
+
+/* Custom scrollbar for boutique polish */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F0E7D8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #063D2E;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C9A24A;
+}
+
+/* Smooth transitions */
+* {
+  box-sizing: border-box;
+}

@@ -1,0 +1,6 @@
+{
+  "name": "Amazaura - Curated Finds. Elevated Everyday Living.",
+  "description": "A premium women's shopping and affiliate discovery destination featuring thoughtfully curated fashion, handbags, shoes, beauty, jewelry, and lifestyle essentials.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
