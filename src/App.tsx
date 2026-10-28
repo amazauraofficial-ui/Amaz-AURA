@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import type { CategoryId, Product, Article } from './types/index.ts';
 import { categories } from './data/categories.ts';
-import { products } from './data/products.ts';
+import { products as initialProducts } from './data/products.ts';
 import { articles } from './data/articles.ts';
+import { handleImageError } from './utils/image.ts';
 
 // Components
 import { Header } from './components/Header.tsx';
 import { Hero } from './components/Hero.tsx';
 import { CategoryCards } from './components/CategoryCards.tsx';
 import { AmazauraEdit } from './components/AmazauraEdit.tsx';
+import { DailyDrops } from './components/DailyDrops.tsx';
 import { CuratedCollections } from './components/CuratedCollections.tsx';
 import { WhyAmazaura } from './components/WhyAmazaura.tsx';
 import { LatestGuides } from './components/LatestGuides.tsx';
@@ -19,8 +21,9 @@ import { ProductDetailModal } from './components/ProductDetailModal.tsx';
 import { SearchModal } from './components/SearchModal.tsx';
 import { FavoritesDrawer } from './components/FavoritesDrawer.tsx';
 import { ArticleModal } from './components/ArticleModal.tsx';
-import { ThreeLuxuryViewer } from './components/ThreeLuxuryViewer.tsx';
+import { ThreeLuxuryViewer, type Product3DModelId } from './components/ThreeLuxuryViewer.tsx';
 import { MoodboardStudio } from './components/MoodboardStudio.tsx';
+import { ProductManagerModal } from './components/ProductManagerModal.tsx';
 import { ArrowUp } from 'lucide-react';
 
 type PageState =
@@ -35,6 +38,19 @@ type PageState =
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageState>('home');
+  const [productList, setProductList] = useState<Product[]>(() => {
+    try {
+      const saved = localStorage.getItem('amazaura_custom_products');
+      if (saved) {
+        const custom = JSON.parse(saved);
+        return [...custom, ...initialProducts];
+      }
+    } catch {
+      // ignore
+    }
+    return initialProducts;
+  });
+
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
 
@@ -43,6 +59,10 @@ export default function App() {
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
   const [is3DViewerOpen, setIs3DViewerOpen] = useState(false);
   const [isMoodboardOpen, setIsMoodboardOpen] = useState(false);
+  const [isProductManagerOpen, setIsProductManagerOpen] = useState(false);
+
+  // Active 3D Model selection
+  const [active3DModelId, setActive3DModelId] = useState<Product3DModelId>('flacon');
 
   // Saved favorites
   const [favoriteIds, setFavoriteIds] = useState<string[]>(() => {
@@ -73,7 +93,7 @@ export default function App() {
       try {
         localStorage.setItem('amazaura_favorites', JSON.stringify(next));
       } catch {
-        // ignore storage errors
+        // ignore
       }
       return next;
     });
@@ -100,17 +120,28 @@ export default function App() {
     }
   };
 
-  const favoriteProducts = products.filter((p) => favoriteIds.includes(p.id));
+  const handleAddProduct = (newProduct: Product) => {
+    setProductList((prev) => {
+      const updated = [newProduct, ...prev];
+      try {
+        const customOnly = updated.filter((p) => p.id.startsWith('amz-custom-'));
+        localStorage.setItem('amazaura_custom_products', JSON.stringify(customOnly));
+      } catch {
+        // ignore
+      }
+      return updated;
+    });
+  };
+
+  const favoriteProducts = productList.filter((p) => favoriteIds.includes(p.id));
 
   const handleNavigate = (page: PageState) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Find active category if currently on category view
   const currentCategoryObj = categories.find((c) => c.id === currentPage);
 
-  // Scroll to top button action
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -123,8 +154,12 @@ export default function App() {
         onNavigate={handleNavigate}
         onOpenSearch={() => setIsSearchOpen(true)}
         onOpenFavorites={() => setIsFavoritesOpen(true)}
-        onOpen3DViewer={() => setIs3DViewerOpen(true)}
+        onOpen3DViewer={() => {
+          setActive3DModelId('flacon');
+          setIs3DViewerOpen(true);
+        }}
         onOpenMoodboard={() => setIsMoodboardOpen(true)}
+        onOpenProductManager={() => setIsProductManagerOpen(true)}
         favoritesCount={favoriteIds.length}
       />
 
@@ -152,13 +187,30 @@ export default function App() {
             {/* Section C: The Amazaura Edit */}
             <div id="the-edit-section">
               <AmazauraEdit
-                products={products}
+                products={productList}
                 onSelectProduct={(p) => setSelectedProduct(p)}
                 onToggleFavorite={handleToggleFavorite}
                 favorites={favoriteIds}
                 onViewAllEdit={() => handleNavigate('edit')}
+                onOpen3DViewer={(modelId) => {
+                  setActive3DModelId(modelId);
+                  setIs3DViewerOpen(true);
+                }}
               />
             </div>
+
+            {/* Section C2: Today's Amazon Daily Drops & 3D Realistic Previews */}
+            <DailyDrops
+              products={productList}
+              onSelectProduct={(p) => setSelectedProduct(p)}
+              onToggleFavorite={handleToggleFavorite}
+              favorites={favoriteIds}
+              onOpen3DViewer={(modelId) => {
+                setActive3DModelId(modelId);
+                setIs3DViewerOpen(true);
+              }}
+              onOpenProductManager={() => setIsProductManagerOpen(true)}
+            />
 
             {/* Section D: Curated Collections */}
             <CuratedCollections
@@ -181,13 +233,17 @@ export default function App() {
         {currentCategoryObj && (
           <CategoryPage
             category={currentCategoryObj}
-            products={products}
+            products={productList}
             articles={articles}
             onSelectProduct={(p) => setSelectedProduct(p)}
             onToggleFavorite={handleToggleFavorite}
             favorites={favoriteIds}
             onSelectArticle={(art) => setSelectedArticle(art)}
             onSelectCategory={(catId) => handleNavigate(catId)}
+            onOpen3DViewer={(modelId) => {
+              setActive3DModelId(modelId);
+              setIs3DViewerOpen(true);
+            }}
           />
         )}
 
@@ -220,6 +276,7 @@ export default function App() {
                         alt={art.title}
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        onError={(e) => handleImageError(e, 'editorial')}
                       />
                       <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 text-[11px] font-semibold text-[#063D2E] rounded-md">
                         {art.category}
@@ -276,8 +333,12 @@ export default function App() {
         onClose={() => setSelectedProduct(null)}
         onToggleFavorite={handleToggleFavorite}
         isFavorite={selectedProduct ? favoriteIds.includes(selectedProduct.id) : false}
-        relatedProducts={products.filter((p) => p.id !== selectedProduct?.id && p.category === selectedProduct?.category)}
+        relatedProducts={productList.filter((p) => p.id !== selectedProduct?.id && p.category === selectedProduct?.category)}
         onSelectRelated={(p) => setSelectedProduct(p)}
+        onOpen3DViewer={(modelId) => {
+          setActive3DModelId(modelId);
+          setIs3DViewerOpen(true);
+        }}
       />
 
       {/* Article Modal */}
@@ -290,7 +351,7 @@ export default function App() {
       <SearchModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
-        products={products}
+        products={productList}
         onSelectProduct={(p) => setSelectedProduct(p)}
       />
 
@@ -308,12 +369,25 @@ export default function App() {
       <ThreeLuxuryViewer
         isOpen={is3DViewerOpen}
         onClose={() => setIs3DViewerOpen(false)}
+        activeModelId={active3DModelId}
+        onSelectModel={setActive3DModelId}
       />
 
       {/* AI Moodboard Studio Modal (gemini-3-pro-image-preview & 1K/2K/4K) */}
       <MoodboardStudio
         isOpen={isMoodboardOpen}
         onClose={() => setIsMoodboardOpen(false)}
+      />
+
+      {/* Amazon Daily Product & 3D Curation Hub */}
+      <ProductManagerModal
+        isOpen={isProductManagerOpen}
+        onClose={() => setIsProductManagerOpen(false)}
+        onAddProduct={handleAddProduct}
+        onPreview3D={(modelId) => {
+          setActive3DModelId(modelId);
+          setIs3DViewerOpen(true);
+        }}
       />
     </div>
   );

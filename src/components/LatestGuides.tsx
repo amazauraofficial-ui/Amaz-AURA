@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Article } from '../types/index.ts';
 import { ArrowRight, BookOpen } from 'lucide-react';
+import { handleImageError } from '../utils/image.ts';
 
 interface LatestGuidesProps {
   articles: Article[];
@@ -51,6 +52,7 @@ export const LatestGuides: React.FC<LatestGuidesProps> = ({
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  onError={(e) => handleImageError(e, 'editorial')}
                 />
                 <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/90 backdrop-blur-xs text-[11px] font-semibold text-[#063D2E] rounded-md uppercase tracking-wider">
                   {article.category}

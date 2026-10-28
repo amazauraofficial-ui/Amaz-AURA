@@ -18,6 +18,16 @@ export interface Category {
   heroHeadline: string;
 }
 
+export type Product3DType =
+  | 'flacon'
+  | 'tote'
+  | 'pearls'
+  | 'candle'
+  | 'sneaker'
+  | 'sunglasses'
+  | 'watch'
+  | 'skincare-jar';
+
 export interface Product {
   id: string;
   title: string;
@@ -41,6 +51,13 @@ export interface Product {
   lastVerified: string;
   isFeaturedInEdit?: boolean;
   collection?: string;
+  model3DId?: Product3DType;
+  custom3dUrl?: string;
+  dimensions?: string;
+  materials?: string;
+  weight?: string;
+  isDailyDrop?: boolean;
+  dailyDropDate?: string;
 }
 
 export interface Article {

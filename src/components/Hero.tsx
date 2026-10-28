@@ -72,7 +72,7 @@ export const Hero: React.FC<HeroProps> = ({ onExploreEdit, onDiscoverFinds }) =>
           <div className="lg:col-span-7 relative">
             <div className="relative rounded-2xl overflow-hidden border border-[#C9A24A]/40 shadow-2xl bg-[#042D22]">
               <img
-                src="/src/assets/images/hero_amazaura_luxury_1792048038650.jpg"
+                src="/assets/images/hero_amazaura_luxury_1792048038650.jpg"
                 alt="Amazaura curated lifestyle collection: leather handbag, nude pumps, white sneakers, perfume bottle and hydrangeas"
                 className="w-full h-auto object-cover max-h-[460px] transform hover:scale-[1.02] transition-transform duration-700"
                 loading="eager"

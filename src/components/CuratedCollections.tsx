@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { handleImageError } from '../utils/image.ts';
 import type { CategoryId } from '../types/index.ts';
 
 interface CuratedCollectionsProps {
@@ -13,38 +14,38 @@ export const CuratedCollections: React.FC<CuratedCollectionsProps> = ({ onSelect
       tagline: 'Refined neutral silhouettes for effortless work & weekend styling.',
       category: 'fashion' as CategoryId,
       tag: 'Everyday Elegance',
-      image: '/src/assets/images/hero_amazaura_luxury_1792048038650.jpg',
+      image: '/assets/images/hero_amazaura_luxury_1792048038650.jpg',
     },
     {
       title: 'The Handbag Edit',
       tagline: 'Structured leather totes, saddle bags, and versatile crossbodies.',
       category: 'handbags' as CategoryId,
-      image: '/src/assets/images/cat_handbags_purses_1792048038968.jpg',
+      image: '/assets/images/cat_handbags_purses_1792048038968.jpg',
     },
     {
       title: 'Beauty Essentials',
       tagline: 'Nourishing botanical oils, restorative ceramides, and clean SPF staples.',
       category: 'beauty' as CategoryId,
-      image: '/src/assets/images/cat_beauty_skincare_1792048040765.jpg',
+      image: '/assets/images/cat_beauty_skincare_1792048040765.jpg',
     },
     {
       title: 'Comfortable & Stylish Shoes',
       tagline: 'All-day arch support trainers and sculpted block heels.',
       category: 'shoes' as CategoryId,
-      image: '/src/assets/images/cat_womens_shoes_1792048039821.jpg',
+      image: '/assets/images/cat_womens_shoes_1792048039821.jpg',
     },
     {
       title: 'Thoughtful Gifts',
       tagline: 'Lustrous baroque pearls, apothecary candles, and heirloom keepsakes.',
       category: 'gifts' as CategoryId,
       tag: 'Thoughtful Gifts',
-      image: '/src/assets/images/edit_pearl_earrings_1792048099941.jpg',
+      image: '/assets/images/edit_pearl_earrings_1792048099941.jpg',
     },
     {
       title: 'Home Favorites',
       tagline: 'Tactile marble trays, natural soy aromatics, and tranquil accents.',
       category: 'lifestyle' as CategoryId,
-      image: '/src/assets/images/cat_home_lifestyle_1792048041664.jpg',
+      image: '/assets/images/cat_home_lifestyle_1792048041664.jpg',
     },
   ];
 
@@ -78,6 +79,7 @@ export const CuratedCollections: React.FC<CuratedCollectionsProps> = ({ onSelect
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
+                onError={(e) => handleImageError(e, col.category)}
               />
 
               {/* Scrim Overlay */}

@@ -15,10 +15,10 @@ export const products: Product[] = [
     verifiedRatingCount: 642,
     affiliateUrl: 'https://www.amazon.com/dp/B09V7Y1978?tag=amazaura-20',
     amazonAsin: 'B09V7Y1978',
-    image: '/src/assets/images/edit_versatile_tote_1792048098180.jpg',
+    image: '/assets/images/edit_versatile_tote_1792048098180.jpg',
     gallery: [
-      '/src/assets/images/edit_versatile_tote_1792048098180.jpg',
-      '/src/assets/images/cat_handbags_purses_1792048038968.jpg',
+      '/assets/images/edit_versatile_tote_1792048098180.jpg',
+      '/assets/images/cat_handbags_purses_1792048038968.jpg',
     ],
     features: [
       'Pebbled vegan composite leather with water-repellent coating',
@@ -38,9 +38,14 @@ export const products: Product[] = [
     ],
     tags: ['Handbags', 'Workwear', 'Tote', 'Everyday Elegance'],
     inStock: true,
-    lastVerified: '2026-10-14',
+    lastVerified: '2026-10-15',
     isFeaturedInEdit: true,
     collection: 'Everyday Elegance',
+    model3DId: 'tote',
+    materials: 'Water-resistant vegan calfskin leather, gold-tone hardware',
+    dimensions: '14.5" W x 11.2" H x 5.8" D (9.5" handle drop)',
+    isDailyDrop: true,
+    dailyDropDate: "Today's Drop",
   },
   {
     id: 'amz-shoes-sneakers-01',
@@ -55,17 +60,17 @@ export const products: Product[] = [
     verifiedRatingCount: 1120,
     affiliateUrl: 'https://www.amazon.com/dp/B08N5M6412?tag=amazaura-20',
     amazonAsin: 'B08N5M6412',
-    image: '/src/assets/images/edit_comfort_sneakers_1792048099311.jpg',
+    image: '/assets/images/edit_comfort_sneakers_1792048099311.jpg',
     gallery: [
-      '/src/assets/images/edit_comfort_sneakers_1792048099311.jpg',
-      '/src/assets/images/cat_womens_shoes_1792048039821.jpg',
+      '/assets/images/edit_comfort_sneakers_1792048099311.jpg',
+      '/assets/images/cat_womens_shoes_1792048039821.jpg',
     ],
     features: [
       'Supple top-grain calfskin leather upper with breathable perforations',
       'Multi-density memory foam orthotic insole with metatarsal cup',
       'Flexible honey rubber cupsole offering wet-weather traction',
       'Padded collar and tongue preventing Achilles friction',
-      'Tonal organic cotton flat laces',
+      'Tonal organic cotton flat laces with gold-dipped aglets',
     ],
     pros: [
       'Wearable straight out of the box with zero blisters',
@@ -78,9 +83,14 @@ export const products: Product[] = [
     ],
     tags: ['Shoes', 'Sneakers', 'Travel Essentials', 'Comfortable Shoes'],
     inStock: true,
-    lastVerified: '2026-10-14',
+    lastVerified: '2026-10-15',
     isFeaturedInEdit: true,
     collection: 'Comfortable & Stylish Shoes',
+    model3DId: 'sneaker',
+    materials: 'Full-grain white nappa leather, ergonomic natural rubber cupsole',
+    dimensions: 'US Women 5 - 11 (True to size, 1.2" platform)',
+    isDailyDrop: true,
+    dailyDropDate: "Today's Drop",
   },
   {
     id: 'amz-beauty-serum-01',
@@ -95,10 +105,10 @@ export const products: Product[] = [
     verifiedRatingCount: 890,
     affiliateUrl: 'https://www.amazon.com/dp/B08DFG4581?tag=amazaura-20',
     amazonAsin: 'B08DFG4581',
-    image: '/src/assets/images/edit_skincare_set_1792048100149.jpg',
+    image: '/assets/images/edit_skincare_set_1792048100149.jpg',
     gallery: [
-      '/src/assets/images/edit_skincare_set_1792048100149.jpg',
-      '/src/assets/images/cat_beauty_skincare_1792048040765.jpg',
+      '/assets/images/edit_skincare_set_1792048100149.jpg',
+      '/assets/images/cat_beauty_skincare_1792048040765.jpg',
     ],
     features: [
       'Cold-pressed botanical squalane, marula, and rosehip seed extract',
@@ -118,9 +128,14 @@ export const products: Product[] = [
     ],
     tags: ['Beauty', 'Skincare', 'Clean Beauty', 'Anti-Aging', 'Serums'],
     inStock: true,
-    lastVerified: '2026-10-14',
+    lastVerified: '2026-10-15',
     isFeaturedInEdit: true,
     collection: 'Beauty Essentials',
+    model3DId: 'skincare-jar',
+    materials: 'Heavy frosted soda-lime glass jar, organic squalane & ceramides',
+    dimensions: '50 ml / 1.7 fl. oz.',
+    isDailyDrop: true,
+    dailyDropDate: "Today's Drop",
   },
   {
     id: 'amz-acc-pearl-01',
@@ -135,10 +150,10 @@ export const products: Product[] = [
     verifiedRatingCount: 415,
     affiliateUrl: 'https://www.amazon.com/dp/B09KKK3312?tag=amazaura-20',
     amazonAsin: 'B09KKK3312',
-    image: '/src/assets/images/edit_pearl_earrings_1792048099941.jpg',
+    image: '/assets/images/edit_pearl_earrings_1792048099941.jpg',
     gallery: [
-      '/src/assets/images/edit_pearl_earrings_1792048099941.jpg',
-      '/src/assets/images/cat_accessories_jewelry_1792048040800.jpg',
+      '/assets/images/edit_pearl_earrings_1792048099941.jpg',
+      '/assets/images/cat_accessories_jewelry_1792048040800.jpg',
     ],
     features: [
       'Grade AAA cultured organic baroque freshwater pearls (8-9mm)',
@@ -158,9 +173,48 @@ export const products: Product[] = [
     ],
     tags: ['Accessories', 'Jewelry', 'Gold Vermeil', 'Pearls', 'Thoughtful Gifts'],
     inStock: true,
-    lastVerified: '2026-10-14',
+    lastVerified: '2026-10-15',
     isFeaturedInEdit: true,
     collection: 'Thoughtful Gifts',
+    model3DId: 'pearls',
+    materials: 'Grade AAA freshwater baroque pearls, 14K solid gold clicker hoops',
+    dimensions: '12mm hoop diameter, 14-16mm organic drop pearl',
+    isDailyDrop: true,
+    dailyDropDate: "Today's Drop",
+  },
+
+  // --- ADDITIONAL TIMEPIECES & ACCESSORIES ---
+  {
+    id: 'amz-acc-watch-01',
+    title: '18K Gold Fluted Chronograph Watch',
+    category: 'accessories',
+    description: 'A classic chronograph timepiece featuring a sunburst emerald dial face, fluted gold bezel, and solid oyster link bracelet.',
+    editorialNote: 'A high-luxury aesthetic that looks remarkable stacked with gold bangles or worn solo as a timeless signature.',
+    badge: "TODAY'S TOP DROP",
+    verifiedPrice: 189.0,
+    currency: 'USD',
+    verifiedRating: 4.9,
+    verifiedRatingCount: 520,
+    affiliateUrl: 'https://www.amazon.com/dp/B08N7P2310?tag=amazaura-20',
+    amazonAsin: 'B08N7P2310',
+    image: '/assets/images/cat_accessories_jewelry_1792048040800.jpg',
+    features: [
+      'Synthetic sapphire crystal scratch-resistant dome',
+      '24K triple vacuum ion gold PVD plating over 316L stainless steel',
+      'Japanese high-precision quartz movement',
+      'Solid oyster link bracelet with safety folding deployant clasp',
+    ],
+    pros: ['Substantial luxury weight', 'Water-resistant to 50M'],
+    considerations: ['Includes sizing tool for removing links'],
+    tags: ['Accessories', 'Jewelry', 'Watches', 'Daily Top Drop'],
+    inStock: true,
+    lastVerified: '2026-10-15',
+    isFeaturedInEdit: true,
+    model3DId: 'watch',
+    materials: '316L Stainless steel, 18K gold vacuum PVD, emerald dial face',
+    dimensions: '36mm case diameter, 9mm depth, 18mm bracelet width',
+    isDailyDrop: true,
+    dailyDropDate: "Today's Drop",
   },
 
   // --- ADDITIONAL HANDBAGS ---
@@ -177,7 +231,7 @@ export const products: Product[] = [
     verifiedRatingCount: 310,
     affiliateUrl: 'https://www.amazon.com/dp/B09TR55412?tag=amazaura-20',
     amazonAsin: 'B09TR55412',
-    image: '/src/assets/images/cat_handbags_purses_1792048038968.jpg',
+    image: '/assets/images/cat_handbags_purses_1792048038968.jpg',
     features: [
       'Classic diamond quilt pattern on structured vegan leather',
       'Sliding gold chain wearable as double shoulder strap or single crossbody',
@@ -189,6 +243,9 @@ export const products: Product[] = [
     inStock: true,
     lastVerified: '2026-10-14',
     collection: 'The Handbag Edit',
+    model3DId: 'tote',
+    materials: 'Emerald vegan composite leather, electroplated gold hardware',
+    dimensions: '9.2" W x 6.5" H x 3.2" D',
   },
 
   // --- ADDITIONAL SHOES ---
@@ -205,7 +262,7 @@ export const products: Product[] = [
     verifiedRatingCount: 520,
     affiliateUrl: 'https://www.amazon.com/dp/B08YY44111?tag=amazaura-20',
     amazonAsin: 'B08YY44111',
-    image: '/src/assets/images/cat_womens_shoes_1792048039821.jpg',
+    image: '/assets/images/cat_womens_shoes_1792048039821.jpg',
     features: [
       'High-gloss mirror patent leather upper with cushioned collar',
       'Reinforced steel shank heel core for wobble-free walking',
@@ -217,6 +274,7 @@ export const products: Product[] = [
     inStock: true,
     lastVerified: '2026-10-14',
     collection: 'Comfortable & Stylish Shoes',
+    model3DId: 'sneaker',
   },
 
   // --- ADDITIONAL BEAUTY & SKINCARE ---
@@ -233,7 +291,7 @@ export const products: Product[] = [
     verifiedRatingCount: 930,
     affiliateUrl: 'https://www.amazon.com/dp/B09QQ99124?tag=amazaura-20',
     amazonAsin: 'B09QQ99124',
-    image: '/src/assets/images/cat_beauty_skincare_1792048040765.jpg',
+    image: '/assets/images/cat_beauty_skincare_1792048040765.jpg',
     features: [
       'Ceramides NP, AP, EOP with phytosphingosine',
       'Madecassoside extract from Centella Asiatica',
@@ -245,6 +303,7 @@ export const products: Product[] = [
     inStock: true,
     lastVerified: '2026-10-14',
     collection: 'Beauty Essentials',
+    model3DId: 'skincare-jar',
   },
 
   // --- ACCESSORIES & EYEWEAR ---
@@ -261,7 +320,7 @@ export const products: Product[] = [
     verifiedRatingCount: 380,
     affiliateUrl: 'https://www.amazon.com/dp/B08ZZ12908?tag=amazaura-20',
     amazonAsin: 'B08ZZ12908',
-    image: '/src/assets/images/cat_accessories_jewelry_1792048040800.jpg',
+    image: '/assets/images/cat_accessories_jewelry_1792048040800.jpg',
     features: [
       'Handmade cellulose acetate frame with 5-barrel barrel hinges',
       'Category 3 polarized CR-39 lenses with anti-reflective back coat',
@@ -273,6 +332,7 @@ export const products: Product[] = [
     inStock: true,
     lastVerified: '2026-10-14',
     collection: 'Everyday Elegance',
+    model3DId: 'sunglasses',
   },
 
   // --- HOME & LIFESTYLE ---
@@ -289,7 +349,7 @@ export const products: Product[] = [
     verifiedRatingCount: 670,
     affiliateUrl: 'https://www.amazon.com/dp/B0811CC889?tag=amazaura-20',
     amazonAsin: 'B0811CC889',
-    image: '/src/assets/images/cat_home_lifestyle_1792048041664.jpg',
+    image: '/assets/images/cat_home_lifestyle_1792048041664.jpg',
     features: [
       '55-hour clean burn candle with lead-free braided cotton wick',
       '100ml reed diffuser with 8 natural rattan reeds (lasts 3-4 months)',
@@ -302,6 +362,7 @@ export const products: Product[] = [
     inStock: true,
     lastVerified: '2026-10-14',
     collection: 'Home Favorites',
+    model3DId: 'candle',
   },
 
   // --- FASHION WARDROBE ---
@@ -318,7 +379,7 @@ export const products: Product[] = [
     verifiedRatingCount: 410,
     affiliateUrl: 'https://www.amazon.com/dp/B08VV66778?tag=amazaura-20',
     amazonAsin: 'B08VV66778',
-    image: '/src/assets/images/hero_amazaura_luxury_1792048038650.jpg',
+    image: '/assets/images/hero_amazaura_luxury_1792048038650.jpg',
     features: [
       '60% Extra-fine Merino Wool, 40% Long-staple Organic Cotton',
       'Side slit hem for easy French tucking',
@@ -330,5 +391,6 @@ export const products: Product[] = [
     inStock: true,
     lastVerified: '2026-10-14',
     collection: 'Everyday Elegance',
+    model3DId: 'flacon',
   },
 ];

@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import type { Category, Product, CategoryId, SortOption, Article } from '../types/index.ts';
 import { filterProducts, sortProducts, formatPrice } from '../utils/catalog.ts';
-import { SlidersHorizontal, ArrowUpDown, Heart, ExternalLink, ArrowRight, Sparkles } from 'lucide-react';
+import { handleImageError } from '../utils/image.ts';
+import { SlidersHorizontal, ArrowUpDown, Heart, ExternalLink, ArrowRight, Sparkles, Box } from 'lucide-react';
+import type { Product3DModelId } from './ThreeLuxuryViewer.tsx';
 
 interface CategoryPageProps {
   category: Category;
@@ -12,6 +14,7 @@ interface CategoryPageProps {
   favorites: string[];
   onSelectArticle: (article: Article) => void;
   onSelectCategory: (catId: CategoryId) => void;
+  onOpen3DViewer?: (modelId: Product3DModelId) => void;
 }
 
 export const CategoryPage: React.FC<CategoryPageProps> = ({
@@ -23,6 +26,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
   favorites,
   onSelectArticle,
   onSelectCategory,
+  onOpen3DViewer,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortOption>('featured');
@@ -79,6 +83,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   alt={category.name}
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
+                  onError={(e) => handleImageError(e, category.id)}
                 />
               </div>
             </div>
@@ -152,6 +157,17 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {sorted.map((product) => {
               const isFav = favorites.includes(product.id);
+              const model3D = (product.model3DId ||
+                (product.category === 'handbags'
+                  ? 'tote'
+                  : product.category === 'shoes'
+                  ? 'sneaker'
+                  : product.category === 'accessories'
+                  ? 'pearls'
+                  : product.category === 'beauty'
+                  ? 'skincare-jar'
+                  : 'candle')) as Product3DModelId;
+
               return (
                 <div
                   key={product.id}
@@ -168,11 +184,25 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       referrerPolicy="no-referrer"
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
+                      onError={(e) => handleImageError(e, product.category)}
                     />
                     {product.badge && (
                       <div className="absolute top-3 left-3 px-2.5 py-1 bg-white/95 text-[#063D2E] border border-[#C9A24A] text-[10px] font-bold uppercase tracking-wider rounded-md shadow-xs pointer-events-none">
                         {product.badge}
                       </div>
+                    )}
+                    {onOpen3DViewer && (
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onOpen3DViewer(model3D);
+                        }}
+                        title="Inspect 3D Realistic Mesh"
+                        className="absolute bottom-3 left-3 px-2.5 py-1 bg-[#063D2E]/90 hover:bg-[#063D2E] text-[#C9A24A] text-[10px] font-bold rounded-md shadow-sm border border-[#C9A24A]/40 flex items-center gap-1 transition-transform active:scale-95"
+                      >
+                        <Box className="w-3 h-3" />
+                        <span>3D Mesh</span>
+                      </button>
                     )}
                     <button
                       onClick={(e) => {
@@ -209,14 +239,26 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                       </div>
                     </div>
 
-                    {/* View Product CTA */}
-                    <button
-                      onClick={() => onSelectProduct(product)}
-                      className="w-full py-2.5 px-4 bg-[#063D2E] hover:bg-[#042D22] text-[#FAF7F0] text-xs font-semibold rounded-full border border-[#C9A24A]/40 transition-all flex items-center justify-center gap-1.5 shadow-xs"
-                    >
-                      <span>View Details & Buy</span>
-                      <ExternalLink className="w-3.5 h-3.5 text-[#C9A24A]" />
-                    </button>
+                    {/* View Product CTA & 3D button */}
+                    <div className="flex items-center gap-2">
+                      {onOpen3DViewer && (
+                        <button
+                          onClick={() => onOpen3DViewer(model3D)}
+                          title="Inspect 3D Mesh"
+                          aria-label="Inspect 3D Mesh"
+                          className="p-2.5 bg-[#FAF7F0] hover:bg-[#F0E7D8] text-[#063D2E] rounded-full border border-[#C9A24A]/40 transition-colors shadow-xs"
+                        >
+                          <Box className="w-3.5 h-3.5 text-[#C9A24A]" />
+                        </button>
+                      )}
+                      <button
+                        onClick={() => onSelectProduct(product)}
+                        className="flex-1 py-2.5 px-4 bg-[#063D2E] hover:bg-[#042D22] text-[#FAF7F0] text-xs font-semibold rounded-full border border-[#C9A24A]/40 transition-all flex items-center justify-center gap-1.5 shadow-xs active:scale-[0.98]"
+                      >
+                        <span>View Details & Buy</span>
+                        <ExternalLink className="w-3.5 h-3.5 text-[#C9A24A]" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               );
@@ -273,6 +315,7 @@ export const CategoryPage: React.FC<CategoryPageProps> = ({
                   alt={art.title}
                   referrerPolicy="no-referrer"
                   className="w-24 h-24 rounded-lg object-cover bg-stone-100 shrink-0 group-hover:scale-105 transition-transform"
+                  onError={(e) => handleImageError(e, 'editorial')}
                 />
                 <div className="space-y-1 min-w-0">
                   <span className="text-[11px] text-stone-400">{art.readTime}</span>

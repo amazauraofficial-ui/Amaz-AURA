@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
+import { handleImageError } from '../utils/image.ts';
 import type { CategoryId } from '../types/index.ts';
 
 interface CategoryCardsProps {
@@ -16,31 +17,31 @@ export const CategoryCards: React.FC<CategoryCardsProps> = ({ onSelectCategory }
     {
       id: 'handbags',
       title: 'Handbags & Purses',
-      image: '/src/assets/images/cat_handbags_purses_1792048038968.jpg',
+      image: '/assets/images/cat_handbags_purses_1792048038968.jpg',
       alt: 'Quilted emerald flap bag and cream leather tote on travertine pedestal',
     },
     {
       id: 'shoes',
       title: 'Shoes',
-      image: '/src/assets/images/cat_womens_shoes_1792048039821.jpg',
+      image: '/assets/images/cat_womens_shoes_1792048039821.jpg',
       alt: 'Nude patent leather pumps and white comfort sneakers',
     },
     {
       id: 'beauty',
       title: 'Beauty & Skincare',
-      image: '/src/assets/images/cat_beauty_skincare_1792048040765.jpg',
+      image: '/assets/images/cat_beauty_skincare_1792048040765.jpg',
       alt: 'Luxury botanical serum bottle, face cream jar, and cosmetic tube',
     },
     {
       id: 'accessories',
       title: 'Accessories',
-      image: '/src/assets/images/cat_accessories_jewelry_1792048040800.jpg',
+      image: '/assets/images/cat_accessories_jewelry_1792048040800.jpg',
       alt: 'Tortoiseshell acetate sunglasses, gold watch, and pearl drop earrings',
     },
     {
       id: 'lifestyle',
       title: 'Home & Lifestyle',
-      image: '/src/assets/images/cat_home_lifestyle_1792048041664.jpg',
+      image: '/assets/images/cat_home_lifestyle_1792048041664.jpg',
       alt: 'Amber soy scented candle, essential oil reed diffuser, and marble tray',
     },
   ];
@@ -65,6 +66,7 @@ export const CategoryCards: React.FC<CategoryCardsProps> = ({ onSelectCategory }
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
+                  onError={(e) => handleImageError(e, cat.id)}
                 />
               </div>
 

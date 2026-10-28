@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Product } from '../types/index.ts';
 import { getValidAffiliateUrl, formatPrice } from '../utils/catalog.ts';
+import { handleImageError } from '../utils/image.ts';
 import { X, Trash2, ExternalLink, Heart, ArrowRight } from 'lucide-react';
 
 interface FavoritesDrawerProps {
@@ -63,6 +64,7 @@ export const FavoritesDrawer: React.FC<FavoritesDrawerProps> = ({
                       alt={product.title}
                       referrerPolicy="no-referrer"
                       className="w-16 h-16 rounded-lg object-cover bg-stone-100 shrink-0 cursor-pointer"
+                      onError={(e) => handleImageError(e, product.category)}
                       onClick={() => {
                         onSelectProduct(product);
                         onClose();

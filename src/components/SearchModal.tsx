@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import type { Product, CategoryId } from '../types/index.ts';
 import { filterProducts, formatPrice } from '../utils/catalog.ts';
+import { handleImageError } from '../utils/image.ts';
 import { Search, X, ArrowRight, ExternalLink } from 'lucide-react';
 
 interface SearchModalProps {
@@ -99,6 +100,7 @@ export const SearchModal: React.FC<SearchModalProps> = ({
                     alt={product.title}
                     referrerPolicy="no-referrer"
                     className="w-16 h-16 rounded-lg object-cover bg-stone-100 shrink-0 group-hover:scale-105 transition-transform"
+                    onError={(e) => handleImageError(e, product.category)}
                   />
                   <div className="flex-1 min-w-0">
                     <span className="text-[10px] uppercase tracking-wider text-[#C9A24A] font-semibold block">

@@ -7,7 +7,7 @@ export const categories: Category[] = [
     slug: 'handbags',
     tagline: 'Timeless silhouettes, structured totes, and elegant daily companions.',
     description: 'Explore curated leather bags, lightweight crossbody styles, and spacious totes designed to transition effortlessly from workdays to weekend escapes.',
-    image: '/src/assets/images/cat_handbags_purses_1792048038968.jpg',
+    image: '/assets/images/cat_handbags_purses_1792048038968.jpg',
     heroHeadline: 'Structured Elegance & Thoughtful Storage',
   },
   {
@@ -16,7 +16,7 @@ export const categories: Category[] = [
     slug: 'shoes',
     tagline: 'Refined footwear where comfort and sophisticated silhouette coexist.',
     description: 'From minimalist white leather sneakers built for all-day walking to timeless nude pumps and buttery leather loafers.',
-    image: '/src/assets/images/cat_womens_shoes_1792048039821.jpg',
+    image: '/assets/images/cat_womens_shoes_1792048039821.jpg',
     heroHeadline: 'Comfort Meets Classic Proportions',
   },
   {
@@ -25,7 +25,7 @@ export const categories: Category[] = [
     slug: 'beauty',
     tagline: 'Nourishing botanical elixirs, active serums, and radiant staples.',
     description: 'Clean formulations, barrier-supporting moisturizers, and effortless everyday beauty favorites selected for tangible hydration and radiance.',
-    image: '/src/assets/images/cat_beauty_skincare_1792048040765.jpg',
+    image: '/assets/images/cat_beauty_skincare_1792048040765.jpg',
     heroHeadline: 'Radiance, Hydration & Daily Rituals',
   },
   {
@@ -34,7 +34,7 @@ export const categories: Category[] = [
     slug: 'accessories',
     tagline: 'Luminous freshwater pearls, warm gold accents, and sculpted eyewear.',
     description: 'Finishing touches that elevate the simplest white tee or tailored blazer. Hypoallergenic gold vermeil, baroque pearls, and UV400 sunglasses.',
-    image: '/src/assets/images/cat_accessories_jewelry_1792048040800.jpg',
+    image: '/assets/images/cat_accessories_jewelry_1792048040800.jpg',
     heroHeadline: 'Artful Accents & Lasting Craft',
   },
   {
@@ -43,7 +43,7 @@ export const categories: Category[] = [
     slug: 'lifestyle',
     tagline: 'Warm amber candles, tranquil reed diffusers, and tactile home accents.',
     description: 'Curated home accessories that transform living spaces into calm sanctuaries. Natural soy wax, fluted marble trays, and botanical aromatics.',
-    image: '/src/assets/images/cat_home_lifestyle_1792048041664.jpg',
+    image: '/assets/images/cat_home_lifestyle_1792048041664.jpg',
     heroHeadline: 'Intentional Living & Serene Spaces',
   },
   {
@@ -52,7 +52,7 @@ export const categories: Category[] = [
     slug: 'fashion',
     tagline: 'Capsule wardrobing, breathable knits, and flattering essential silhouettes.',
     description: 'Versatile fashion staples that form the backbone of a timeless, stress-free wardrobe. Neutral color palettes, premium drape, and easy care.',
-    image: '/src/assets/images/hero_amazaura_luxury_1792048038650.jpg',
+    image: '/assets/images/hero_amazaura_luxury_1792048038650.jpg',
     heroHeadline: 'Effortless Capsule Wardrobing',
   },
   {
@@ -61,7 +61,7 @@ export const categories: Category[] = [
     slug: 'gifts',
     tagline: 'Curated presents for birthdays, hostesses, holidays, and self-care moments.',
     description: 'Beautifully boxed items that feel deeply personal, delightfully luxurious, and exceptionally practical.',
-    image: '/src/assets/images/cat_home_lifestyle_1792048041664.jpg',
+    image: '/assets/images/cat_home_lifestyle_1792048041664.jpg',
     heroHeadline: 'Gifts of Warmth, Style & Delight',
   },
   {
@@ -70,7 +70,7 @@ export const categories: Category[] = [
     slug: 'edit',
     tagline: 'Our premier editorial collection of top-rated, meticulously vetted favorites.',
     description: 'The core capsule collection representing Amazaura’s design philosophy: refined, versatile, and thoughtfully priced.',
-    image: '/src/assets/images/hero_amazaura_luxury_1792048038650.jpg',
+    image: '/assets/images/hero_amazaura_luxury_1792048038650.jpg',
     heroHeadline: 'The Definitive Amazaura Selection',
   },
 ];

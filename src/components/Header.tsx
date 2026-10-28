@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrandLogo } from './BrandLogo.tsx';
-import { Search, Heart, Menu, X, Sparkles, Box } from 'lucide-react';
+import { Search, Heart, Menu, X, Sparkles, Box, PlusCircle } from 'lucide-react';
 import type { CategoryId } from '../types/index.ts';
 
 interface HeaderProps {
@@ -10,6 +10,7 @@ interface HeaderProps {
   onOpenFavorites: () => void;
   onOpen3DViewer: () => void;
   onOpenMoodboard: () => void;
+  onOpenProductManager?: () => void;
   favoritesCount: number;
 }
 
@@ -20,6 +21,7 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenFavorites,
   onOpen3DViewer,
   onOpenMoodboard,
+  onOpenProductManager,
   favoritesCount,
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -93,6 +95,19 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Right Action Suite: Search, 3D Studio, Moodboard, Saved, Mobile toggle */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            {/* Add Product / Curation Hub Trigger */}
+            {onOpenProductManager && (
+              <button
+                onClick={onOpenProductManager}
+                className="hidden xl:flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold text-[#042D22] bg-[#C9A24A]/25 hover:bg-[#C9A24A]/40 border border-[#C9A24A]/50 rounded-lg transition-colors whitespace-nowrap shadow-xs"
+                title="Add Daily Amazon Product & 3D Mesh"
+                aria-label="Add Daily Amazon Product"
+              >
+                <PlusCircle className="w-3.5 h-3.5 text-[#063D2E]" />
+                <span>+ Add Find</span>
+              </button>
+            )}
+
             {/* 3D Studio Trigger */}
             <button
               onClick={onOpen3DViewer}
@@ -154,15 +169,15 @@ export const Header: React.FC<HeaderProps> = ({
       {/* Mobile Drawer Overlay */}
       {mobileMenuOpen && (
         <div className="xl:hidden border-t border-[#F0E7D8] bg-[#FAF7F0] px-4 pt-3 pb-6 space-y-3 shadow-lg">
-          <div className="grid grid-cols-2 gap-2 pb-3 border-b border-[#F0E7D8]">
+          <div className="grid grid-cols-3 gap-2 pb-3 border-b border-[#F0E7D8]">
             <button
               onClick={() => {
                 onOpen3DViewer();
                 setMobileMenuOpen(false);
               }}
-              className="flex items-center justify-center gap-2 p-2.5 bg-[#F0E7D8] text-xs font-semibold text-[#063D2E] rounded-lg"
+              className="flex items-center justify-center gap-1.5 p-2 bg-[#F0E7D8] text-xs font-semibold text-[#063D2E] rounded-lg"
             >
-              <Box className="w-4 h-4 text-[#C9A24A]" />
+              <Box className="w-3.5 h-3.5 text-[#C9A24A]" />
               <span>3D Studio</span>
             </button>
             <button
@@ -170,11 +185,23 @@ export const Header: React.FC<HeaderProps> = ({
                 onOpenMoodboard();
                 setMobileMenuOpen(false);
               }}
-              className="flex items-center justify-center gap-2 p-2.5 bg-[#F0E7D8] text-xs font-semibold text-[#063D2E] rounded-lg"
+              className="flex items-center justify-center gap-1.5 p-2 bg-[#F0E7D8] text-xs font-semibold text-[#063D2E] rounded-lg"
             >
-              <Sparkles className="w-4 h-4 text-[#C9A24A]" />
+              <Sparkles className="w-3.5 h-3.5 text-[#C9A24A]" />
               <span>AI Lookbook</span>
             </button>
+            {onOpenProductManager && (
+              <button
+                onClick={() => {
+                  onOpenProductManager();
+                  setMobileMenuOpen(false);
+                }}
+                className="flex items-center justify-center gap-1.5 p-2 bg-[#C9A24A]/30 text-xs font-semibold text-[#042D22] rounded-lg border border-[#C9A24A]/50"
+              >
+                <PlusCircle className="w-3.5 h-3.5 text-[#063D2E]" />
+                <span>+ Daily Drop</span>
+              </button>
+            )}
           </div>
 
           <div className="grid grid-cols-2 gap-1.5">

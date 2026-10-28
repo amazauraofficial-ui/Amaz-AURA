@@ -23,17 +23,17 @@ export const MoodboardStudio: React.FC<MoodboardStudioProps> = ({ isOpen, onClos
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [generatedImageUrl, setGeneratedImageUrl] = useState<string | null>(
-    '/src/assets/images/hero_amazaura_luxury_1792048038650.jpg'
+    '/assets/images/hero_amazaura_luxury_1792048038650.jpg'
   );
   const [history, setHistory] = useState<Array<{ url: string; prompt: string; size: ImageSize; ratio: AspectRatio }>>([
     {
-      url: '/src/assets/images/hero_amazaura_luxury_1792048038650.jpg',
+      url: '/assets/images/hero_amazaura_luxury_1792048038650.jpg',
       prompt: 'Amazaura Signature Hero Still Life',
       size: '2K',
       ratio: '16:9',
     },
     {
-      url: '/src/assets/images/edit_versatile_tote_1792048098180.jpg',
+      url: '/assets/images/edit_versatile_tote_1792048098180.jpg',
       prompt: 'Chic Pebbled Leather Tote on Italian Marble',
       size: '1K',
       ratio: '4:3',

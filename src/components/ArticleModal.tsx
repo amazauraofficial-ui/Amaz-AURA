@@ -1,6 +1,7 @@
 import React from 'react';
 import type { Article } from '../types/index.ts';
 import { X, Calendar, Clock, User, Sparkles } from 'lucide-react';
+import { handleImageError } from '../utils/image.ts';
 
 interface ArticleModalProps {
   article: Article | null;
@@ -61,6 +62,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose }) 
               alt={article.title}
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"
+              onError={(e) => handleImageError(e, 'editorial')}
             />
           </div>
 

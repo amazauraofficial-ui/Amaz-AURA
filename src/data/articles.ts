@@ -10,7 +10,7 @@ export const articles: Article[] = [
     readTime: '5 min read',
     date: 'October 14, 2026',
     author: 'Amazaura Editorial Desk',
-    image: '/src/assets/images/cat_handbags_purses_1792048038968.jpg',
+    image: '/assets/images/cat_handbags_purses_1792048038968.jpg',
     sections: [
       {
         heading: '1. The Weight-to-Volume Ratio',
@@ -36,7 +36,7 @@ export const articles: Article[] = [
     readTime: '6 min read',
     date: 'October 12, 2026',
     author: 'Amazaura Editorial Desk',
-    image: '/src/assets/images/cat_womens_shoes_1792048039821.jpg',
+    image: '/assets/images/cat_womens_shoes_1792048039821.jpg',
     sections: [
       {
         heading: '1. The Clean White Low-Profile Sneaker',
@@ -62,7 +62,7 @@ export const articles: Article[] = [
     readTime: '4 min read',
     date: 'October 10, 2026',
     author: 'Amazaura Editorial Desk',
-    image: '/src/assets/images/cat_beauty_skincare_1792048040765.jpg',
+    image: '/assets/images/cat_beauty_skincare_1792048040765.jpg',
     sections: [
       {
         heading: '1. Plant Squalane vs. Heavy Mineral Oils',
